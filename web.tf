@@ -1,6 +1,6 @@
 resource "aws_instance" "web_server" {
   count = var.web_want == true ? var.web_count : 0
-  ami           = "ami-05b803528e30ac1ec"
+  ami           = "ami-0aa2b7722dc1b5612"
   instance_type = var.instance_type
   key_name      = var.my_key_name
   
