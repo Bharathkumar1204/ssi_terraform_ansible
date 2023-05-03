@@ -1,4 +1,4 @@
-resource "aws_route53_zone" "hosted_zone" {
+data "aws_route53_zone" "hosted_zone" {
   name = var.my_domain_name
 }
 
@@ -12,7 +12,7 @@ locals {
 
 
 resource "aws_route53_record" "mail" {
-  zone_id = resource.aws_route53_zone.hosted_zone.zone_id
+  zone_id = data.aws_route53_zone.hosted_zone.zone_id
   name    = var.my_mail_sub_domain_name
   type    = "A"
   ttl     = 300
@@ -20,7 +20,7 @@ resource "aws_route53_record" "mail" {
 }
 
 resource "aws_route53_record" "db" {
-  zone_id = resource.aws_route53_zone.hosted_zone.zone_id
+  zone_id = data.aws_route53_zone.hosted_zone.zone_id
   name    = var.my_db_sub_domain_name
   type    = "A"
   ttl     = 300
@@ -28,7 +28,7 @@ resource "aws_route53_record" "db" {
 }
 
 resource "aws_route53_record" "httpd" {
-  zone_id = resource.aws_route53_zone.hosted_zone.zone_id
+  zone_id = data.aws_route53_zone.hosted_zone.zone_id
   name    = var.my_httpd_server_sub_domain_name
   type    = "A"
   ttl     = 300
@@ -36,7 +36,7 @@ resource "aws_route53_record" "httpd" {
 }
 
 resource "aws_route53_record" "web" {
-  zone_id = resource.aws_route53_zone.hosted_zone.zone_id
+  zone_id = data.aws_route53_zone.hosted_zone.zone_id
   name    = var.my_web_sub_domain_name
   type    = "A"
   ttl     = 300
